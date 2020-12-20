@@ -1,4 +1,4 @@
-name: .NET
+name: NuGet
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.301      
+        dotnet-version: 3.1.301
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -26,3 +26,12 @@ jobs:
         PushNotificationsOptions__InstanceId: ${{ secrets.INSTANCE_ID }}
         PushNotificationsOptions__SecretKey: ${{ secrets.SECRET_KEY }}
       run: dotnet test --no-build --verbosity normal
+    - name: Pack
+      run: dotnet pack -o ./package
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+      with:
+        nuget-version: latest    
+    - name: Push
+      run: dotnet nuget push ./package/Pusher.PushNotifications.*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        
