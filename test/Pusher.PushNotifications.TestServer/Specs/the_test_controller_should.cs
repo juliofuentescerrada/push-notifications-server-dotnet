@@ -9,7 +9,7 @@
     public class the_test_controller_should : IClassFixture<TestFixture>
     {
         private readonly TestFixture _testFixture;
-        private readonly Fixture _fixture = new();
+        private readonly Fixture _fixture = new Fixture();
         public the_test_controller_should(TestFixture testFixture) => _testFixture = testFixture;
 
         [Fact]

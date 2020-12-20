@@ -5,7 +5,17 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
 
-    public sealed record PublishMessage(string To, string Body);
+    public sealed class PublishMessage
+    {
+        public string To { get; }
+        public string Body { get; }
+
+        public PublishMessage(string to, string body)
+        {
+            To = to;
+            Body = body;
+        }
+    };
     
     [Route("push-notifications")]
     public class PushNotificationsController : Controller
