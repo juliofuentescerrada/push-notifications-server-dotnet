@@ -111,14 +111,14 @@
 
             CheckForServerErrors((int)status, body);
 
-            return JsonSerializer.Deserialize<PushNotificationResponse>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }).PublishId;
+            return JsonSerializer.Deserialize<PushNotificationResponse>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })?.PublishId;
         }
 
         private static void CheckForServerErrors(int statusCode, string body)
         {
             string ExtractErrorDescription()
             {
-                return JsonSerializer.Deserialize<PushNotificationErrorResponse>(body, new JsonSerializerOptions {PropertyNameCaseInsensitive = true}).Description;
+                return JsonSerializer.Deserialize<PushNotificationErrorResponse>(body, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })?.Description;
             }
 
             switch (statusCode)
