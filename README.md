@@ -18,7 +18,7 @@ dotnet add package Pusher.PushNotifications
 ```
 ## Usage
 ### Configuring the SDK for Your Instance
-Use your instance id and secret (you can get these from the dashboard) to create a Beams PushNotifications instance:
+Use your instance id and secret (you can get these from the [dashboard](https://dash.pusher.com/beams)) to create a Beams PushNotifications instance:
 
 ```C#
 var pushNotificationsOptions = new PushNotificationsOptions
