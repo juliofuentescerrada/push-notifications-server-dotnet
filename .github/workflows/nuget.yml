@@ -27,7 +27,7 @@ jobs:
         PushNotificationsOptions__SecretKey: ${{ secrets.SECRET_KEY }}
       run: dotnet test --no-build --verbosity normal
     - name: Pack
-      run: dotnet pack -o ./package
+      run: dotnet pack -c $BUILD_CONFIG -o ./package
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
       with:
