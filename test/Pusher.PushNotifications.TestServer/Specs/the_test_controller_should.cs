@@ -9,7 +9,7 @@
     public class the_test_controller_should : IClassFixture<TestFixture>
     {
         private readonly TestFixture _testFixture;
-        private readonly Fixture _fixture = new Fixture();
+        private readonly Fixture _fixture = new();
         public the_test_controller_should(TestFixture testFixture) => _testFixture = testFixture;
 
         [Fact]
@@ -28,9 +28,10 @@
         public async Task send_to_interests()
         {
             var interest = _fixture.Create<string>();
+            var title = _fixture.Create<string>();
             var body = _fixture.Create<string>();
-            var message = new PublishMessage(interest, body);
-                
+            var message = new PublishMessage(interest, title, body);
+
             var response = await _testFixture.Server
                 .CreateHttpApiRequest<PushNotificationsController>(c => c.PublishToInterests(message))
                 .PostAsync();
@@ -42,9 +43,10 @@
         public async Task send_to_users()
         {
             var userId = _fixture.Create<string>();
+            var title = _fixture.Create<string>();
             var body = _fixture.Create<string>();
-            var message = new PublishMessage(userId, body);
-                
+            var message = new PublishMessage(userId, title, body);
+            
             var response = await _testFixture.Server
                 .CreateHttpApiRequest<PushNotificationsController>(c => c.PublishToUsers(message))
                 .PostAsync();

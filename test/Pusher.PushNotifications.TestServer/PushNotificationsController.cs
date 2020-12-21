@@ -5,18 +5,8 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
 
-    public sealed class PublishMessage
-    {
-        public string To { get; }
-        public string Body { get; }
+    public record PublishMessage(string To, string Title, string Body);
 
-        public PublishMessage(string to, string body)
-        {
-            To = to;
-            Body = body;
-        }
-    };
-    
     [Route("push-notifications")]
     public class PushNotificationsController : Controller
     {
@@ -37,18 +27,20 @@
         [HttpPost("interests")]
         public async Task<ActionResult<string>> PublishToInterests([FromBody] PublishMessage message)
         {
-            var interests = new List<string> { message.To };
+            var (to, title, body) = message;
+            
+            var interests = new List<string> {to};
 
             var notification = new Dictionary<string, object>
             {
-                { "title", $"Hello android {message.To} fans!" },
-                { "body", message.Body }
+                { "title", title },
+                { "body", body }
             };
 
             var alert = new Dictionary<string, object>
             {
-                { "title", $"Hello iOS {message.To} fans!" },
-                { "body", message.Body }
+                { "title", title },
+                { "body", body }
             };
 
             var publishRequest = new Dictionary<string, object>
@@ -64,18 +56,20 @@
         [HttpPost("users")]
         public async Task<ActionResult<string>> PublishToUsers([FromBody] PublishMessage message)
         {
-            var users = new List<string> { message.To };
+            var (to, title, body) = message;
+
+            var users = new List<string> { to };
 
             var notification = new Dictionary<string, object>
             {
-                { "title", $"Hello {message.To}!" },
-                { "body", message.Body }
+                { "title", title },
+                { "body", body }
             };
 
             var alert = new Dictionary<string, object>
             {
-                { "title", $"Hello {message.To}!" },
-                { "body", message.Body }
+                { "title", title },
+                { "body", body }
             };
 
             var publishRequest = new Dictionary<string, object>

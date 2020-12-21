@@ -18,8 +18,8 @@
         private readonly string _instanceId;
         private readonly string _secretKey;
         private readonly PushNotifications _pushNotifications;
-        private readonly Fixture _fixture = new Fixture();
-        private readonly Mock<HttpMessageHandler> _mockHandler = new Mock<HttpMessageHandler>();
+        private readonly Fixture _fixture = new();
+        private readonly Mock<HttpMessageHandler> _mockHandler = new();
         private readonly Expression _anyCancellationToken = ItExpr.IsAny<CancellationToken>();
 
         public push_notifications_should()
