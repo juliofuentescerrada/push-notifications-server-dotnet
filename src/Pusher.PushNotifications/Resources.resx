@@ -130,7 +130,7 @@
     <value>Publish method expects at least one user</value>
   </data>
   <data name="InvalidInstanceId" xml:space="preserve">
-    <value>Instance Id can't be an empty string</value>
+    <value>InstanceId can't be an empty string</value>
   </data>
   <data name="InvalidInterest" xml:space="preserve">
     <value>Interest {0} is too long (expected less than {1}, got {2})</value>
@@ -142,10 +142,10 @@
     <value>Publish requests can only have up to {0} users (given {1})</value>
   </data>
   <data name="InvalidSecretKey" xml:space="preserve">
-    <value>Secret Key can't be an empty string</value>
+    <value>SecretKey can't be an empty string</value>
   </data>
   <data name="InvalidUserId" xml:space="preserve">
-    <value>User id {0} is too long (expected less than {1}, got {2})</value>
+    <value>UserId {0} is too long (expected less than {1}, got {2})</value>
   </data>
   <data name="PublishToInterestsEndpoint" xml:space="preserve">
     <value>publish_api/v1/instances/{0}/publishes/interests</value>

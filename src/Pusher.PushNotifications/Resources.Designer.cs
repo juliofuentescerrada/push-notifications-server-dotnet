@@ -97,7 +97,7 @@ namespace Pusher.PushNotifications {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Instance Id can&apos;t be an empty string.
+        ///   Looks up a localized string similar to InstanceId can&apos;t be an empty string.
         /// </summary>
         internal static string InvalidInstanceId {
             get {
@@ -133,7 +133,7 @@ namespace Pusher.PushNotifications {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Secret Key can&apos;t be an empty string.
+        ///   Looks up a localized string similar to SecretKey can&apos;t be an empty string.
         /// </summary>
         internal static string InvalidSecretKey {
             get {
@@ -142,7 +142,7 @@ namespace Pusher.PushNotifications {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User id {0} is too long (expected less than {1}, got {2}).
+        ///   Looks up a localized string similar to UserId {0} is too long (expected less than {1}, got {2}).
         /// </summary>
         internal static string InvalidUserId {
             get {
