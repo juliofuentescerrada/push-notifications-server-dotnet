@@ -7,9 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    env:
-      BUILD_CONFIG: Release
+  build:    
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -20,18 +18,18 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --no-restore -c $BUILD_CONFIG
+      run: dotnet build -c Release --no-restore 
     - name: Test
       env:
         PushNotificationsOptions__InstanceId: ${{ secrets.INSTANCE_ID }}
         PushNotificationsOptions__SecretKey: ${{ secrets.SECRET_KEY }}
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test -c Release --no-build --verbosity normal
     - name: Pack
-      run: dotnet pack -c $BUILD_CONFIG -o ./package
+      run: dotnet pack ./src/Pusher.PushNotifications/Pusher.PushNotifications.csproj -c Release -o ./package
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
       with:
-        nuget-version: latest    
+        nuget-version: latest          
     - name: Push
       run: dotnet nuget push ./package/Pusher.PushNotifications.*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
         
