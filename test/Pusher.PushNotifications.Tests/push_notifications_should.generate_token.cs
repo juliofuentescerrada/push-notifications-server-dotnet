@@ -29,7 +29,7 @@ namespace Pusher.PushNotifications.Tests
             FluentActions
                 .Invoking(() => _pushNotifications.GenerateToken(userId))
                 .Should().Throw<ArgumentException>()
-                .WithMessage($"User id {userId} is too long (expected less than 165, got 200)");
+                .WithMessage($"UserId {userId} is too long (expected less than 165, got 200)");
         }
     }
 }
